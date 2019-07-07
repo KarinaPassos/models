@@ -19,7 +19,7 @@ KhipuSpaceModel::KhipuSpaceModel(QObject *parent) :
 
 int KhipuSpaceModel::rowCount(const QModelIndex &parent) const
 {
-    return khipuList.size();
+    return 0;
 }
 
 QVariant KhipuSpaceModel::data(const QModelIndex &index, int role) const
@@ -27,7 +27,7 @@ QVariant KhipuSpaceModel::data(const QModelIndex &index, int role) const
     return 0;
 }
 
-void KhipuSpaceModel::addSpace(KhipuSpace space)
+void KhipuSpaceModel::addSpace(KhipuSpace *space)
 {
-    khipuList.append(space);
+
 }

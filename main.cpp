@@ -1,30 +1,28 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-
+#include <QQuickView>
 #include "khipuspace.h"
 #include "khipuspacemodel.h"
+#include <qqmlengine.h>
+#include <qqml.h>
+#include <QtQuick/qquickitem.h>
+#include <QtQuick/qquickview.h>
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
 
-    QQmlApplicationEngine engine;
-    const QUrl url(QStringLiteral("qrc:/main.qml"));
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-                     &app, [url](QObject *obj, const QUrl &objUrl) {
-        if (!obj && url == objUrl)
-            QCoreApplication::exit(-1);
-    }, Qt::QueuedConnection);
+    QList<QObject*> spaceList;
+    spaceList.append(new KhipuSpace("espaço 1", TypeSpaces::Space2D, 0));
 
-    KhipuSpaceModel model;
+    QQuickView view;
+    view.setResizeMode(QQuickView::SizeRootObjectToView);
+    QQmlContext *ctxt = view.rootContext();
+    ctxt->setContextProperty("myModel", QVariant::fromValue(spaceList));
 
-    model.addSpace(KhipuSpace("espaço 1", "Space2D", 0));
-
-    QQmlContext *context = engine.rootContext();
-    context->setContextProperty("KhipuSpaceModel", &model);
-    engine.load(url);
+    view.setSource(QUrl("qrc:view.qml"));
+    view.show();
 
     return app.exec();
 }

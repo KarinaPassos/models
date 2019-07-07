@@ -26,13 +26,10 @@ public:
         IndexRole
     };
 
-    QList<KhipuSpace> khipuList;
-
     KhipuSpaceModel(QObject *parent = nullptr);
-    void addSpace (KhipuSpace space);
+    void addSpace (KhipuSpace *space); //eh pra fazer isso?
 
-private:
-    QList<KhipuSpace> m_list;
+private://acabei de perceber q tem duas listas q bosta
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
 };

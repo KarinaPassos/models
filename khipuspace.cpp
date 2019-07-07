@@ -5,6 +5,14 @@ KhipuSpace::KhipuSpace()
 
 }
 
+
+KhipuSpace::KhipuSpace(QString name, TypeSpaces type, unsigned int index)
+{
+    m_name = name;
+    m_type = type;
+    m_index = index;
+}
+
 QString KhipuSpace::name() const
 {
     return m_name;

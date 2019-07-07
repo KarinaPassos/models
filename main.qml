@@ -7,9 +7,14 @@ Window {
     height: 480
     title: qsTr("Hello World")
     ListView {
-        width: 200; height: 250
+        width: 100; height: 100
 
         model: myModel
-        delegate: Text { text: "Type: " + type + ", name:" + name }
+        delegate: Rectangle {
+            height: 25
+            width: 100
+            color: model.modelData.color
+            Text { text: "nome: " + name + "tipo: " + type }
+        }
     }
 }
