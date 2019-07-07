@@ -7,13 +7,6 @@
 #include <QList>
 #include <QVariant>
 
-/** Percaba que criei o KhipuSpaceModel do mesmo jeito que o AnimalModel
- *
- * Criei um enum com essas tal de Roles
- * Onde cada Role é um atributo do KhipuSpace
- *
- * Veja que no exemplo do AnimalModel, Type e Size são atributos de
- * Animal.*/
 class KhipuSpaceModel : public QAbstractListModel
 {
     Q_OBJECT
@@ -27,9 +20,9 @@ public:
     };
 
     KhipuSpaceModel(QObject *parent = nullptr);
-    void addSpace (KhipuSpace *space); //eh pra fazer isso?
+    void addSpace (KhipuSpace *space);
 
-private://acabei de perceber q tem duas listas q bosta
+private:
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
 };

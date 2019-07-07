@@ -11,10 +11,6 @@ KhipuSpaceModel::KhipuSpaceModel(QObject *parent) :
     roles[NameRole] = "name";
     roles[ElementsRole] = "elements";
     roles[IndexRole] = "index";
-    //talvez dê ruim, pq pode confundir com o index do abastractlistmodel
-    // mas segue o baile
-
-    // Eu to basicamente dizendo qual vai ser o nome de cada propriedade no QML
 }
 
 int KhipuSpaceModel::rowCount(const QModelIndex &parent) const

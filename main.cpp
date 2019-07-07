@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
-    QList<QObject*> spaceList;
+    QList<KhipuSpace*> spaceList; //tentei trocar pra QList<QObject*> igual no exemplo mas não funfa
     spaceList.append(new KhipuSpace("espaço 1", TypeSpaces::Space2D, 0));
 
     QQuickView view;
